@@ -11,58 +11,10 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsString,
-  IsOptional,
-  IsDate,
-  ValidateNested,
-  IsBoolean,
-} from "class-validator";
+import { IsDate, IsString, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { Datarequest } from "../../datarequest/base/Datarequest";
-import { Datasuggestion } from "../../datasuggestion/base/Datasuggestion";
-import { Group } from "../../group/base/Group";
-import { Enumblockuser } from "../../enumblockuser/base/Enumblockuser";
-import { Linksharing } from "../../linksharing/base/Linksharing";
-import { Membergroup } from "../../membergroup/base/Membergroup";
-import { Myidentity } from "../../myidentity/base/Myidentity";
-import { Profile } from "../../profile/base/Profile";
-import { Profileview } from "../../profileview/base/Profileview";
 @ObjectType()
 class User {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  apartment!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  city!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  country!: string | null;
-
   @ApiProperty({
     required: true,
   })
@@ -70,53 +22,6 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Datarequest],
-  })
-  @ValidateNested()
-  @Type(() => Datarequest)
-  @IsOptional()
-  datarequestsaskid?: Array<Datarequest>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Datarequest],
-  })
-  @ValidateNested()
-  @Type(() => Datarequest)
-  @IsOptional()
-  datarequestsreceiveid?: Array<Datarequest>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Datasuggestion],
-  })
-  @ValidateNested()
-  @Type(() => Datasuggestion)
-  @IsOptional()
-  datasuggestionsreceiveid?: Array<Datasuggestion>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Datasuggestion],
-  })
-  @ValidateNested()
-  @Type(() => Datasuggestion)
-  @IsOptional()
-  datasuggestionssuggestionid?: Array<Datasuggestion>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email!: string | null;
 
   @ApiProperty({
     required: false,
@@ -128,26 +33,6 @@ class User {
     nullable: true,
   })
   firstName!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Group],
-  })
-  @ValidateNested()
-  @Type(() => Group)
-  @IsOptional()
-  groupsownerid?: Array<Group>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  housnumber!: string | null;
 
   @ApiProperty({
     required: true,
@@ -166,123 +51,7 @@ class User {
   @Field(() => String, {
     nullable: true,
   })
-  image!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  isactive!: boolean | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Enumblockuser,
-  })
-  @ValidateNested()
-  @Type(() => Enumblockuser)
-  @IsOptional()
-  isblocked?: Enumblockuser | null;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  isregistered!: boolean | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
   lastName!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Linksharing],
-  })
-  @ValidateNested()
-  @Type(() => Linksharing)
-  @IsOptional()
-  linksharings?: Array<Linksharing>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Membergroup],
-  })
-  @ValidateNested()
-  @Type(() => Membergroup)
-  @IsOptional()
-  membergroups?: Array<Membergroup>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Myidentity],
-  })
-  @ValidateNested()
-  @Type(() => Myidentity)
-  @IsOptional()
-  myidentitiesidentityid?: Array<Myidentity>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Myidentity],
-  })
-  @ValidateNested()
-  @Type(() => Myidentity)
-  @IsOptional()
-  myidentitiesmyidentitycontactid?: Array<Myidentity>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Profile],
-  })
-  @ValidateNested()
-  @Type(() => Profile)
-  @IsOptional()
-  profiles?: Array<Profile>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Profileview],
-  })
-  @ValidateNested()
-  @Type(() => Profileview)
-  @IsOptional()
-  profileviewsidentityid?: Array<Profileview>;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Profileview],
-  })
-  @ValidateNested()
-  @Type(() => Profileview)
-  @IsOptional()
-  profileviewswatchid?: Array<Profileview>;
 
   @ApiProperty({
     required: true,
@@ -293,17 +62,6 @@ class User {
   })
   @Field(() => [String])
   roles!: Array<string>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  street!: string | null;
 
   @ApiProperty({
     required: true,
